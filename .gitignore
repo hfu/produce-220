@@ -1,3 +1,9 @@
+test.rfc8142
+dummy.mbtiles
+dummy.mbtiles-journal
+mbtiles/*.mbtiles
+mbtiles/*.mbtiles-journal
+
 # Logs
 logs
 *.log
