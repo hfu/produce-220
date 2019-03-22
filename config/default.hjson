@@ -1,5 +1,6 @@
 {
   modifyPath: ../produce-220-modify-js/modify.js
-  srcPath: test.rfc8142
+  srcPath: ../welt/pull.rfc8142
+  srcPath: t.rfc8142
   mbtilesDir: mbtiles
 }

@@ -9,7 +9,11 @@ const mbtilesDir = config.get('mbtilesDir')
 const zxy = process.argv.slice(2, 5).map(v => parseInt(v))
 console.error(`${new Date().toISOString()}: ${zxy.join('/')}`)
 
-const rl = readline.createInterface({ input: process.stdin })
+const rl = readline.createInterface({ 
+  input: process.stdin,
+  output: process.stdout
+})
+
 if (zxy[0] === 6) {
   const bbox = tilebelt.tileToBBOX([zxy[1], zxy[2], zxy[0]])
   const tippecanoe = spawn('tippecanoe', [
@@ -19,6 +23,7 @@ if (zxy[0] === 6) {
     '--minimum-zoom=6',
     '--maximum-zoom=15',
     '--hilbert',
+    '--detect-shared-borders',
     `--clip-bounding-box=${bbox.join(',')}`
   ], { stdin: 'pipe', stdout: 'inherit', stderr: 'inherit' })
 
@@ -32,10 +37,10 @@ if (zxy[0] === 6) {
   })
   rl.on('close', () => {
     tippecanoe.stdin.end()
-    process.stdout.end('\n')
+    process.stdout.end()
   })
 } else {
   rl.on('close', () => {
-    process.stdout.end('\n')
+    process.stdout.end()
   })
 }

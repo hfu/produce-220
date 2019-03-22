@@ -12,6 +12,8 @@ const prefilter = spawn('tippecanoe', [
   '--full-detail=26',
   '--no-feature-limit',
   '--no-tile-size-limit',
+  '--check-polygons',
+  '--detect-longitude-wraparound',
   '--prefilter=node prefilter.js $1 $2 $3',
   srcPath
 ], { stdio: 'inherit' })
